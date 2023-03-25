@@ -14,23 +14,23 @@ export class AppComponent implements OnInit{
   ]
   chains: Chain[]= [
     {
-      name: "Gnosis",
-      chainId: "0xsum",
+      name: "Gnosis Chiado Testnet",
+      chainId: "10200",
       contract: ""
     },
     {
-      name: "Scroll",
-      chainId: "0xsum",
+      name: "Scroll Alpha Testnet",
+      chainId: "534353",
       contract: "",
     },
     {
-      name: "Polygon",
-      chainId: "0xsum",
+      name: "zkEVM Testnet",
+      chainId: "1442",
       contract: ""
     },
     {
-      name: "Mantle",
-      chainId: "0xsum",
+      name: "Mantle Testnet",
+      chainId: "5001",
       contract: ""
     }
   ];
@@ -43,6 +43,7 @@ export class AppComponent implements OnInit{
   passwordWithdraw: String = "";
   
   loggedIn = false;
+  wallet: string = "Connect Wallet";
 
   constructor(){
   }
@@ -51,7 +52,31 @@ export class AppComponent implements OnInit{
     
   }
 
-  connectWallet(){}
+  async connectWallet(){
+    if (this.selectedChain.name == ""){
+      alert("Please select a chain!");
+      return;
+    }
+    if (typeof window.ethereum !== 'undefined') {
+      console.log('MetaMask is installed!');
+    }else{
+      alert("Install Metamask to proceed!")
+    }
+    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+    this.wallet = accounts[0];  
+
+    const correctChain = window.ethereum.networkVersion == this.selectedChain.chainId
+
+    if(!correctChain){
+      console.log(window.ethereum.networkVersion);
+      alert("Please switch to the correct chain in your Wallet! Should be: " + this.selectedChain.name + " with chainId "+this.selectedChain.chainId);
+      return;
+    }
+
+    this.loggedIn = true;
+    
+  }
 
   sendfunds(){}
 

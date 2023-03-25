@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
 
@@ -19,7 +20,7 @@ import {FormsModule} from '@angular/forms'
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserAnimationsModule,
     MenubarModule,
     DropdownModule,
     FormsModule,
@@ -28,7 +29,8 @@ import {FormsModule} from '@angular/forms'
     SplitterModule,
     TabViewModule,
     InputNumberModule,
-    InputTextModule
+    InputTextModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

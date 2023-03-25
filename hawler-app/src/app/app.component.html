@@ -5,7 +5,7 @@
   <ng-template pTemplate="end">
     <div>
       <p-dropdown [options]="chains" [(ngModel)]="selectedChain" placeholder="Select Chain" [editable]="false" optionLabel="name"></p-dropdown>
-      <p-button label="Connect Wallet"></p-button>
+      <p-button label="{{wallet}}" (click)="connectWallet()"></p-button>
     </div>
   </ng-template>  
 </p-menubar>
