@@ -41,6 +41,8 @@ export class ContractService {
     const [sender, withdrawAddress] = eventReceived.args;
 
     console.log(sender, withdrawAddress)
+    
+    alert("Withdraw address: "+ withdrawAddress)
 
     return withdrawAddress;
 
